@@ -1,5 +1,7 @@
+
 class DropBoxController {
   constructor() {
+
     this.startUploadTime = 0; // var para receber um datetime no momento de carregar um arquivo
     this.btnSendFileEl = document.querySelector("#btn-send-file"); // pegando o botão enviar arquivos pelo Id
     this.inputFilesEl = document.querySelector("#files"); // pegando input com id file para abrir ele  e manda os arquivos
@@ -7,9 +9,12 @@ class DropBoxController {
     this.progressBarEl = this.snackModalEl.querySelector(".mc-progress-bar-fg"); //recebendo a DIV FILHA que é a barra de progresso do modal,  que esta dentro da var snackModalEl
     this.namefileEl = this.snackModalEl.querySelector(".filename"); //Recebendo o SPAN que a class filename dentro da DIV snackModalEl
     this.timeleftEl = this.snackModalEl.querySelector(".timeleft"); //Recebendo o SPAN que a class timeleft dentro da DIV snackModalEl
+    this.connectFirebase = new FireBaseController();
+    this.connectFirebase.connectFirebase();
     this.initEvents();
   }
 
+  
   initEvents() {
     /**Pondo o evento do click no botão btnSendFileEl e abrindo janela de anexar arquivos
      * do input do tipo file id='file'
