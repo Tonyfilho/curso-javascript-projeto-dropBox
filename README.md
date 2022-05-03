@@ -23,3 +23,7 @@ note: pode excluir as pasta ja criadas pelo express-generator.
 obs: caso não mude a extensão do arquivo, tem q ir na aba do explore e pedir para mostrar EXTENSÕES
 04 npm start dentro de APP 
 05 ir para localhost:http://localhost:3000/ no navegador
+
+06 Instalação do formidable para gerenciar Arquivo por parte do NODE-Express npm install formidable --save em nosso package.Json
+
+
