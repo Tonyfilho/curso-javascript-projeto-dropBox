@@ -9,9 +9,10 @@ class DropBoxController {
     this.progressBarEl = this.snackModalEl.querySelector(".mc-progress-bar-fg"); //recebendo a DIV FILHA que é a barra de progresso do modal,  que esta dentro da var snackModalEl
     this.namefileEl = this.snackModalEl.querySelector(".filename"); //Recebendo o SPAN que a class filename dentro da DIV snackModalEl
     this.timeleftEl = this.snackModalEl.querySelector(".timeleft"); //Recebendo o SPAN que a class timeleft dentro da DIV snackModalEl
-    this.connectFirebase = new FireBaseController();
-    this.connectFirebase.connectFirebase();
+   
     this.initEvents();
+     this.firebaseController = new FireBaseController().getTest(); 
+    console.log(this.firebaseController);
   }
 
   
