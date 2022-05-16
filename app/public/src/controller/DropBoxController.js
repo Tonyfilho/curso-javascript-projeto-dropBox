@@ -11,10 +11,13 @@ class DropBoxController {
     this.timeleftEl = this.snackModalEl.querySelector(".timeleft"); //Recebendo o SPAN que a class timeleft dentro da DIV snackModalEl
    
     this.initEvents();
-     this.firebaseController = new FireBaseController().getTest(); 
-    console.log(this.firebaseController);
-  }
 
+    this.fireconnect();
+  }
+  
+  fireconnect(){
+    // console.log("initializeApp", initializeApp);
+  }
   
   initEvents() {
     /**Pondo o evento do click no botão btnSendFileEl e abrindo janela de anexar arquivos
