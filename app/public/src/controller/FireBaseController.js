@@ -1,4 +1,5 @@
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
+ import { getDatabase } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
 
 
   
@@ -12,9 +13,14 @@
       messagingSenderId: "868526418652",
       appId: "1:868526418652:web:c26b84ba50608ebc0b2219",
     };
-    initializeApp(firebaseStore);
-
+    initializeApp(firebaseStore);    
+    // console.log("initializeApp", initializeApp);
     
-    console.log("initializeApp", initializeApp);
-
+    const db = getDatabase(initializeApp(firebaseStore));
+    // console.log("DB", db);
+    
+    window.app.DB = db; // mandando os FireBase globalmente;
+    console.log("DB", window);
+    
+    
  
