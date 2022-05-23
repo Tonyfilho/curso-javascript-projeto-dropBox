@@ -1,7 +1,5 @@
-
 class DropBoxController {
   constructor() {
-
     this.startUploadTime = 0; // var para receber um datetime no momento de carregar um arquivo
     this.btnSendFileEl = document.querySelector("#btn-send-file"); // pegando o botão enviar arquivos pelo Id
     this.inputFilesEl = document.querySelector("#files"); // pegando input com id file para abrir ele  e manda os arquivos
@@ -9,16 +7,10 @@ class DropBoxController {
     this.progressBarEl = this.snackModalEl.querySelector(".mc-progress-bar-fg"); //recebendo a DIV FILHA que é a barra de progresso do modal,  que esta dentro da var snackModalEl
     this.namefileEl = this.snackModalEl.querySelector(".filename"); //Recebendo o SPAN que a class filename dentro da DIV snackModalEl
     this.timeleftEl = this.snackModalEl.querySelector(".timeleft"); //Recebendo o SPAN que a class timeleft dentro da DIV snackModalEl
-   
     this.initEvents();
 
-    this.fireconnect();
   }
-  
-  fireconnect(){
-    // console.log("initializeApp", initializeApp);
-  }
-  
+
   initEvents() {
     /**Pondo o evento do click no botão btnSendFileEl e abrindo janela de anexar arquivos
      * do input do tipo file id='file'
@@ -34,8 +26,19 @@ class DropBoxController {
      */
     this.inputFilesEl.addEventListener("change", (event) => {
       //console.log(event.target.files);
-      this.uploadTask(event.target.files); //mandando o arquivo para uploadTask()
-      this.modalShow(); /**Mostrando o model na tela */
+      //mandando o arquivo para uploadTask()
+      // temos q ter um forEach, pois o results é uma array de promises.All()
+      this.uploadTask(event.target.files).then((results) => {
+        results.forEach((result) => {
+          // ir no fireBase e salvar a rota
+          // result.files['input-file'] é o nome do OBJETO a Ser Salvo no FIREBASE
+          console.log('O result ', result.files['input-file']);
+          FireBaseController.insert('files', result.files['input-file']);
+        });
+        this.modalShow(false); /**Mostrando o model na tela */
+
+      });
+      this.modalShow();
       this.inputFilesEl.value = "";
     });
   }
@@ -73,16 +76,16 @@ class DropBoxController {
           let ajax = new XMLHttpRequest();
           ajax.open("POST", "/upload");
           ajax.onload = (event) => {
-            this.modalShow(false); // fechando o modal
+           // this.modalShow(false); // fechando o modal
             try {
               resolve(JSON.parse(ajax.responseText));
             } catch (error) {
-              this.modalShow(false); // fechando o modal
+             // this.modalShow(false); // fechando o modal
               reject(error);
             }
           };
           ajax.onerror = (event) => {
-            this.modalShow(false); // fechando o modal
+           // this.modalShow(false); // fechando o modal
             reject(event);
           };
           ajax.upload.onprogress = (event) => {
