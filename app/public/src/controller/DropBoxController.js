@@ -8,6 +8,10 @@ class DropBoxController {
     this.namefileEl = this.snackModalEl.querySelector(".filename"); //Recebendo o SPAN que a class filename dentro da DIV snackModalEl
     this.timeleftEl = this.snackModalEl.querySelector(".timeleft"); //Recebendo o SPAN que a class timeleft dentro da DIV snackModalEl
     this.initEvents();
+    // const  DB = require("./FirebaseDatabase");
+    // this.localFireBase = new DB();
+     this.localFireBase = new FirebaseDatabase();
+    console.log(this.localFireBase);
 
   }
 

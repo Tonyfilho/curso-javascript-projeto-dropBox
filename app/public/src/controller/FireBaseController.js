@@ -24,7 +24,7 @@ initializeApp(firebaseStore);
 //const db = getDatabase(initializeApp(firebaseStore));
 let db = getDatabase();
 
-window.app.DB = db; // mandando os FireBase globalmente;
+//window.app.DB = db; // mandando os FireBase globalmente;
 // console.log("Global", window.app.DB);
 
 // ----------------------------------insert data---------------------------------//
